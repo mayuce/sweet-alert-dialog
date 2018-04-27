@@ -72,7 +72,7 @@ public class OptAnimationLoader {
                 anim = new TranslateAnimation(c, attrs);
             } else {
                 try {
-                    anim = new RotateAnimation(c, attrs);
+                    anim = (Animation) Class.forName(name).getConstructor(Context.class, AttributeSet.class).newInstance(c, attrs);
                 } catch (Exception te) {
                     throw new RuntimeException("Unknown animation name: " + parser.getName() + " error:" + te.getMessage());
                 }
