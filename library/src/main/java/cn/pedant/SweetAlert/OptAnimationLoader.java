@@ -68,15 +68,9 @@ public class OptAnimationLoader {
                 anim = new ScaleAnimation(c, attrs);
             }  else if (name.equals("rotate")) {
                 anim = new RotateAnimation(c, attrs);
-            }  else if (name.equals("translate")) {
+            }  else  {
                 anim = new TranslateAnimation(c, attrs);
-            } else {
-                try {
-                    anim = (Animation) Class.forName(name).getConstructor(Context.class, AttributeSet.class).newInstance(c, attrs);
-                } catch (Exception te) {
-                    throw new RuntimeException("Unknown animation name: " + parser.getName() + " error:" + te.getMessage());
-                }
-            }
+            } 
 
             if (parent != null) {
                 parent.addAnimation(anim);
